@@ -1,0 +1,9 @@
+.search {
+  padding: 5px 5px;
+  border: 1px solid #09d3ac;
+  line-height: 1.6;
+
+  @media screen and (max-width: 480px) {
+    width: 100%;
+  }
+}

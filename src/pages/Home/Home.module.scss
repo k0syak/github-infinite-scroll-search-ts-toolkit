@@ -1,0 +1,27 @@
+.home {
+  min-height: 100vh;
+  background-color: #f1f1f1;
+
+  .home__container {
+    width: 100%;
+    max-width: 1199px;
+    margin: 0 auto;
+  }
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 10vh;
+  padding: 0 20px;
+
+  @media screen and (max-width: 480px) {
+    flex-direction: column;
+  }
+}
+
+.logo {
+  font-size: 26px;
+  color: #09d3ac;
+}
