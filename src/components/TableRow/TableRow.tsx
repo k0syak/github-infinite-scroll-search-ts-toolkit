@@ -1,6 +1,6 @@
 import {IUser} from "@types";
 import {useAppDispatch} from "@src/store";
-import {userSlice} from "@features/users";
+import {addCurrentUser} from "@features/users";
 import styles from "./TableRow.module.scss";
 
 interface ITableRowProps {
@@ -8,7 +8,6 @@ interface ITableRowProps {
 }
 
 export const TableRow = (props: ITableRowProps) => {
-    const {addCurrentUser} = userSlice.actions;
     const dispatch = useAppDispatch();
 
     const {name, picture, gender} = props.user;

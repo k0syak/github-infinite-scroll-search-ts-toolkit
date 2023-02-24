@@ -1,12 +1,11 @@
 import React, {useCallback, useEffect, useState} from "react";
 import {useSelector} from "react-redux";
 import {useAppDispatch} from "@src/store";
-import {selectUsersInfo, userSlice, useUsers} from "@features/users";
+import {selectUsersInfo, useUsers, removeCurrentUser} from "@features/users";
 import {Modal, Search, TableWrap, UserInfo} from "@components";
 import styles from "./Home.module.scss";
 
 export const Home = () => {
-    const {removeCurrentUser} = userSlice.actions;
     const dispatch = useAppDispatch();
     const [fetchItems] = useUsers();
     const {list, nextPage, totalPages, limit, currentUser} = useSelector(selectUsersInfo);

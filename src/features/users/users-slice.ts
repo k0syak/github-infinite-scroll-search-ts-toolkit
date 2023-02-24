@@ -102,10 +102,11 @@ export const userSlice = createSlice({
                 state.status = StatusEnum.FULFILLED;
                 state.totalPages = state.totalCount / state.limit;
                 state.nextPage += 1;
-                state.list = state.list.concat(action.payload.data.results);
+                state.list.push(...action.payload.data.results);
                 state.loading = false;
             })
     },
 });
 
+export const {searchUserByName, clearUserList, addCurrentUser, removeCurrentUser} = userSlice.actions;
 export const usersReducer = userSlice.reducer;

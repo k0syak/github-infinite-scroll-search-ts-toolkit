@@ -24,6 +24,11 @@ export const TableWrap = (props: ITableProps) => {
         fetchFunc();
     }, [inView]);
 
+    const informText = loading ? 'Loading...' : 'Sorry, user not found =(';
+    const usersRow = users.map(user => <TableRow key={`${createId(user)}`} user={user}/>);
+    const displayRefCondition = (!loading && users.length > 15) && (nextPage <= totalPages);
+    const viewRowRef = displayRefCondition ? (<tr ref={trInViewRef}></tr>) : '';
+
     return (
         <div className={styles['table-wrapper']}>
             {
@@ -31,24 +36,19 @@ export const TableWrap = (props: ITableProps) => {
                     ? (<div className="no-data">{error}</div>)
                     :
                     users.length === 0
-                        ? loading ? 'Loading...' : 'Sorry, user not found =('
+                        ? informText
                         :
                         <>
                             <table className={styles['table']}>
                                 <tbody>
-                                    <tr>
-                                        <th>Avatar</th>
-                                        <th>Name</th>
-                                        <th>Gender</th>
-                                        <th></th>
-                                    </tr>
-                                    {users.map(user => <TableRow key={`${createId(user)}`} user={user}/>)}
-
-                                    {
-                                        (!loading && users.length > 15) && (nextPage <= totalPages)
-                                            ? (<tr ref={trInViewRef}></tr>)
-                                            : ''
-                                    }
+                                <tr>
+                                    <th>Avatar</th>
+                                    <th>Name</th>
+                                    <th>Gender</th>
+                                    <th></th>
+                                </tr>
+                                {usersRow}
+                                {viewRowRef}
                                 </tbody>
                             </table>
                         </>

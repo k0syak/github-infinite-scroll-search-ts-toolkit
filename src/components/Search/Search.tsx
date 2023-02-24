@@ -1,6 +1,6 @@
 import React, {useCallback, useEffect, useState} from "react";
 import {useAppDispatch} from "@src/store";
-import {userSlice} from "@features/users";
+import {searchUserByName, clearUserList} from "@features/users";
 import {debounce} from "@src/utils";
 import styles from "./Search.module.scss";
 
@@ -10,7 +10,6 @@ interface ISearchProps {
 
 export const Search = ({fetchFunc}: ISearchProps) => {
     const dispatch = useAppDispatch();
-    const {searchUserByName, clearUserList} = userSlice.actions;
     const [value, setValue] = useState('');
     const [searchQuery, setSearchQuery] = useState('');
 
